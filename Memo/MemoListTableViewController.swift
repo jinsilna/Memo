@@ -27,6 +27,11 @@ class MemoListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated)
+        tableView.reloadData()
+        print("viewWillAppear",Memo.dummyMemoList.count)
+    }
+   
     // MARK: - Table view data source
 
 

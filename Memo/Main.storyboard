@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +11,7 @@
         <!--MEMO-->
         <scene sceneID="Ntm-OH-yQW">
             <objects>
-                <tableViewController id="rWh-QD-25w" customClass="MemoListTableViewController" customModule="Memo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="rWh-QD-25w" customClass="MemoListTableViewController" customModule="Memo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MRq-HQ-ClL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +52,9 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="THZ-JH-sMu">
                             <inset key="landscapeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                            <connections>
+                                <segue destination="26d-g0-8lf" kind="presentation" id="9ul-hH-8dM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -59,10 +63,56 @@
             </objects>
             <point key="canvasLocation" x="120.28985507246378" y="228.34821428571428"/>
         </scene>
+        <!--new memo-->
+        <scene sceneID="Ds5-AH-6da">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="I8h-gF-cnH" customClass="CompostViewController" customModule="Memo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9eM-hY-p03">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xcd-cC-2Ha">
+                                <rect key="frame" x="0.0" y="-5" width="414" height="965"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kzs-Ax-AFa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xcd-cC-2Ha" firstAttribute="trailing" secondItem="kzs-Ax-AFa" secondAttribute="trailing" id="1XT-jD-60V"/>
+                            <constraint firstItem="Xcd-cC-2Ha" firstAttribute="top" secondItem="9eM-hY-p03" secondAttribute="top" constant="-5" id="AWA-O3-swi"/>
+                            <constraint firstItem="Xcd-cC-2Ha" firstAttribute="leading" secondItem="kzs-Ax-AFa" secondAttribute="leading" id="HOz-Ev-61j"/>
+                            <constraint firstAttribute="bottom" secondItem="Xcd-cC-2Ha" secondAttribute="bottom" constant="-64" id="ahL-cc-hVi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="new memo" id="djm-5L-0iV">
+                        <barButtonItem key="leftBarButtonItem" title="cancel" id="fmq-gz-blt">
+                            <connections>
+                                <action selector="close:" destination="I8h-gF-cnH" id="dDW-TB-kj7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="save" id="3rP-dc-m1S">
+                            <connections>
+                                <action selector="save:" destination="I8h-gF-cnH" id="8bp-ef-zHg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memoTextView" destination="Xcd-cC-2Ha" id="zw7-Qd-VH7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffh-xa-TGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2073.913043478261" y="173.4375"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KXp-B4-iLH">
             <objects>
-                <navigationController id="I35-8q-Nn8" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="I35-8q-Nn8" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="bQX-e6-WCQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -75,8 +125,29 @@
             </objects>
             <point key="canvasLocation" x="-768" y="229"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2Zb-ng-nxA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="26d-g0-8lf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nGr-IO-N0o">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="I8h-gF-cnH" kind="relationship" relationship="rootViewController" id="9vm-vx-tC2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="huv-ne-X3l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1163.768115942029" y="173.4375"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
